@@ -3,3 +3,8 @@ colors
 #790252 - purple
 #AF0171 - pink
 #E80F88 - lite pink
+
+
+font-family
+"Oswald"
+'League Gothic'

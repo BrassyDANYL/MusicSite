@@ -17,6 +17,7 @@
             <a href="#" class="menu-item">Songers</a>
             <a href="#" class="menu-item">Categories</a>
             <a href="#" class="menu-item">Menu</a>
+            <a href="/admin.php" class="menu-item">Admin</a>
          </nav>
       </div>
    </header>

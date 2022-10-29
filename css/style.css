@@ -36,6 +36,9 @@ body {
    scroll-behavior: smooth;
    text-rendering: optimizeSpeed;
    line-height: 1.5;
+   background: url('../img/background2.jpg');
+   background-position: center;
+   background-size: cover;
 }
 
 ul[class],
@@ -76,6 +79,14 @@ select {
    padding: 0px 20px;
    margin: 0 auto;
 }
+.content .title{
+   color: #fff;
+   font-size: 20px;
+   font-family: "Oswald";
+   text-align: center;
+   padding: 20px 0px;
+   background-color: rgba(1, 1, 1, 0.6);
+}
 header{
    background-color: #4C0033
 }
@@ -107,6 +118,7 @@ header{
    transition: 0.4s;
 }
 .player{
+   transition: 1.4s;
    background-color: #4C0033;
    color: #fff;
    width: 100%;
@@ -161,13 +173,114 @@ header{
    display: flex;
    flex-direction: row;
    gap:20px;
+   flex-wrap: wrap;
+   justify-content: center;
 }
 .flex-elem{
    width: 300px;
    padding: 10px;
-   background-color: #4C0033;
+   background-color: rgba(43, 6, 56, 0.6);
+   transition: 0.4s;
 }
-.flex-elem .album-cover{
-   
+.flex-elem:hover{
+   scale: 1.05;
+   transition: 0.4s;
+}
+.flex-elem .album-cover{  
    height: 280px;
+}
+.admin-upload-form{
+   display: flex;
+   flex-direction: column;
+   background-color: rgba(43, 6, 56, 0.6);
+   padding: 20px;
+}
+.admin-upload-form label {
+   color: #fff;
+   font-size: 16px;
+   font-family: 'Oswald';
+}
+.admin-menu-title{
+   color: #fff;
+   font-size: 24px;
+   font-family: 'Oswald';
+}
+.admin-upload-form input{
+   max-width: 400px;
+   align-self: center;
+   border-radius: 25px;
+   border: 1px solid black;
+   padding: 0px 10px;
+   margin-bottom:15px;
+   cursor: pointer;
+}
+.admin-upload-form .file{
+   border-radius: 0px; 
+   border: 0px;
+   background-color: #AF0171;
+   background-color: indigo;
+   color: white;
+   padding: 0.5rem;
+   font-family: sans-serif;
+   border-radius: 0.3rem;
+   cursor: pointer;
+   }
+.admin-upload-form button{
+   max-width: 100px;
+   align-self: center;
+}
+.flex-elem {
+   color: #fff;
+   font-family: "Oswald";
+}
+
+.player .progress__container{
+   align-self: center;
+   min-width: 300px;
+   height: 5px;
+   background-color: #fff;
+   border-radius: 50px;
+}
+.player .progress{
+   background-color: #E80F88;
+   height: 100%;
+}
+.adminka{
+   text-align: center;
+   align-items: center;
+   align-content: center;
+}
+.player-hidden{
+   bottom: -100%;
+}
+.player-show{
+   bottom: 0%;
+   transition: 0.4s;
+}
+.content-adminka{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   gap: 20px;
+   padding-top: 20px;
+   padding-bottom: 20px;
+}
+.flex-elem-admin{
+   display: flex;
+   flex-direction: row;
+   height: 100px;
+   gap:20px;
+   background-color: rgba(1, 1, 1, 0.6);
+   text-decoration: none;
+}
+.flex-elem-admin .album-cover{
+   height: 100%;
+}
+.flex-elem-admin .flex-elem-admin-info{
+   text-align: start;
+   color: #fff;
+   font-family: 'Oswald';
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
 }

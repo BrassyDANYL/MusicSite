@@ -11,10 +11,6 @@ const player = document.querySelector('.player'),
       imgSrc = document.querySelector('.img__src'),
       albumName = document.querySelector('.player-album')
       
-
-const songs = ["What I've Done", "Нервы"];
-const albums = ["Minutes to Midnight", "Всё что вокруг"]
-
 const cbox = document.querySelectorAll('.flex-elem');
 
 function songChoice(){
@@ -33,7 +29,7 @@ function loadSong(song, album) {
    title.innerHTML = song
    albumName.innerHTML = album,
    audio.src = 'audio/'+ song + '.mp3'
-   coverImage.src = 'img/' + album + '.jpg'
+   coverImage.src = 'img/albums/' + album + '.jpg'
 }
 
 loadSong(songChoice(), "g");
@@ -41,6 +37,8 @@ loadSong(songChoice(), "g");
 //Play
 function playSong(){
    player.classList.add('play');
+   player.classList.remove('player-hidden');
+   player.classList.add('player-show');
    cover.classList.add('active__img');
    imgSrc.classList.remove('fa-play');
    imgSrc.classList.add('fa-pause');
@@ -64,4 +62,20 @@ playBtn.addEventListener('click', () => {
       playSong();
    }
 });
+//Progress bar
+function updateProgress(e){
+   const {duration, currentTime } = e.srcElement;
+   const progressPercent = (currentTime / duration) * 100;
+   progress.style.width = progressPercent+"%";
+}
+audio.addEventListener('timeupdate', updateProgress);
 
+//Set progress 
+function setProgress(e){
+   const width = this.clientWidth;
+   const clickX = e.offsetX;
+   const duration = audio.duration;
+   audio.currentTime = (clickX / width) * duration;
+   
+}
+progressContainer.addEventListener('click', setProgress);

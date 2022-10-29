@@ -1,23 +1,27 @@
    <?php require 'header.php' ?> 
    <div class="container">
    <div class="content">
-      <h2 class="title">Top Songs</h2>
+      <h2 class="title">All Songs</h2>
       <div class="flex-container">
 
-          <div class="flex-elem">
-            <img class="album-cover" src="../img/Minutes to Midnight.jpg" alt="">
-            <h3 class="name">What I've Done</h3>
-            <h3 class="album">Minutes to Midnight</h3>
-            <h3 class="author">Linkin Park</h3>
-         </div>
+         
+   <?php 
 
+      $result = mysqli_query($connection, "SELECT * FROM songs");
+
+      while(($cat = mysqli_fetch_assoc($result))){?>
          <div class="flex-elem">
-            <img class="album-cover" src="../img/Всё что вокруг.jpg" alt="">
-            <h3 class="name">Нервы</h3>
-            <h3 class="album">Всё что вокруг</h3>
-            <h3 class="author">Нервы</h3>
+            <img class="album-cover" src="../img/albums/<?php echo $cat['album']?>.jpg" alt="">
+            <h3 class="name"><?php echo $cat['song']?></h3>
+            <h3 class="album"><?php echo $cat['album']?></h3>
+            <h3 class="author"><?php echo $cat['singer']?></h3>
          </div>
+         
 
+         <?php
+      }
+
+   ?>
         
 
       </div>
@@ -29,9 +33,9 @@
 
 
 <!-- player -->
-<div class="container">
+<div class="container ">
    <audio class="audio" src=""></audio>
-   <div class="player">
+   <div class="player player-hidden">
       <div class="info">
       <div class="cover"><img src="" alt="album" class="cover__img"></div>
       <div class="info-right">
