@@ -36,9 +36,23 @@ body {
    scroll-behavior: smooth;
    text-rendering: optimizeSpeed;
    line-height: 1.5;
-   background: url('../img/background2.jpg');
-   background-position: center;
-   background-size: cover;
+   background: linear-gradient(-45deg, #000, #e73c7e, #23a6d5, gray);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+   0% {
+      background-position: 0% 50%;
+   }
+
+   50% {
+      background-position: 100% 50%;
+   }
+
+   100% {
+      background-position: 0% 50%;
+   }
 }
 
 ul[class],
@@ -175,6 +189,8 @@ header{
    gap:20px;
    flex-wrap: wrap;
    justify-content: center;
+   padding-top: 20px;
+   padding-bottom: 20px;
 }
 .flex-elem{
    width: 300px;
@@ -283,4 +299,22 @@ header{
    display: flex;
    flex-direction: column;
    justify-content: center;
+}
+.single{
+   display: flex;
+   flex-direction: row;  
+   gap: 20px;
+}
+.single-image{
+   width: 300px;
+}
+.single-info{
+   width: 300px;
+   display: flex;
+   flex-direction: column;
+}
+.single-info label{
+   margin-bottom: 10px;
+   color: #fff;
+   font-family: 'Oswald';
 }

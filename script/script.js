@@ -43,7 +43,9 @@ function playSong(){
    imgSrc.classList.remove('fa-play');
    imgSrc.classList.add('fa-pause');
    audio.play();
-}
+   $('.flex-container').css('padding-bottom','120px');
+   }
+
 //Pause
 function pauseSong(){
    player.classList.remove('play'),

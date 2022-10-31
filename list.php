@@ -26,7 +26,7 @@
       $result = mysqli_query($connection, "SELECT * FROM songs");
 
       while(($cat = mysqli_fetch_assoc($result))){?>
-         <a href="/single.php?id=<?php echo $cat['id'];?>" class="flex-elem-admin">
+         <a href="/single.php?id=<?php echo $cat['id']?>" class="flex-elem-admin">
             <div>
             <img class="album-cover" src="../img/albums/<?php echo $cat['album']?>.jpg" alt="">
             </div>

@@ -23,13 +23,13 @@
    <div class="admin-menu-title">Upload new song</div>
    <form enctype="multipart/form-data" action="form.php" class="admin-upload-form" method="POST">
       <label for="song">Введіть назву пісні</label>
-      <input require type="text" name="song">
+      <input required type="text" name="song">
 
       <label for="album">Введіть назву альбому</label>
-      <input require type="text" name="album">
+      <input required type="text" name="album">
 
       <label for="singer">Введіть виконавця</label>
-      <input require type="text" name="singer">
+      <input required type="text" name="singer">
 
       <label for="cover">Оберіть обложку</label>
       <input class="file" type="file" name="cover" accept="image/jpg">
@@ -37,8 +37,7 @@
       <label for="file">Оберіть файл з потрібною пісенькою</label>
       <input class="file" type="file" name="file" accept="audio/mp3" >
 
-      <button type="submit">Submit</button>
-   </form>
+      <input type="submit">
 </div>
 <?php
 // phpinfo();
