@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <?php require "includes/db.php";?>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" type="text/css" href="../css/style.css">
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">   
-   <title>Random</title>
-</head>
+<?php require "header.php" ?> 
+<body>
 <?php
-   $songsArray  = mysqli_query($connection, "SELECT id FROM songs");
-   $art = mysqli_fetch_assoc($songsArray);
-   echo $art['id'];
-   $input = array($art);
-   $rand_keys = array_rand($input, 2);
-   echo $input[$rand_keys[0]] . "\n";
-   echo $input[$rand_keys[1]] . "\n";
+   $result = mysqli_query($connection, "SELECT * from songs order by rand()");
 ?>
+   <div class="carousel">
+<?php
+   while($cat = mysqli_fetch_array($result)){
+     
+      require 'music-elem.php';
+}
+?>
+   </div>
+<?php require "player.php"?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="/script/script.js"></script>
+
+</body>

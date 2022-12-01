@@ -10,14 +10,18 @@
    <?php require "includes/db.php";?>
 </head>
 <body>
-   <header>
+   <header class="header">
       <div class="container header-container">
-         <div class="logo">bESTMusic</div> 
+         <a href="/" class="logo">bESTMusic</a> 
+         <div class="burger">
+            <div class="burger-content"></div>
+         </div>
          <nav class="header-menu">
             <a href="#" class="menu-item">Songers</a>
             <a href="/randomsongs.php" class="menu-item">Random</a>
             <a href="#" class="menu-item">Menu</a>
             <a href="/admin.php" class="menu-item">Admin</a>
+            <a href="/signup.php" class="menu-item">Sign Up</a>
          </nav>
       </div>
    </header>
