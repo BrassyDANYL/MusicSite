@@ -9,13 +9,17 @@
    <title>Admin menu</title>
    <?php require "includes/db.php";?>
 </head>
-<header>
+<header class="header">
  <div class="container header-container">
    <a href="/" class="logo">bESTMusic</a>  
+   <div class="burger">
+            <div class="burger-content"></div>
+   </div>
    <nav class="header-menu">
    <a class="menu-item" href='/admin.php'>Add new song</a>
    <a class="menu-item" href='/list.php'>All songs</a>
    </nav>
+   
 </div>
 
    </header>
@@ -44,6 +48,5 @@
    ?>
    </div>
 </div>
-<?php
-// phpinfo();
-require "footer.php"?>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="/script/scriptAdmin.js"></script>

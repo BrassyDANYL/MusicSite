@@ -313,6 +313,16 @@ header{
    flex-direction: column;
    justify-content: center;
 }
+@media (max-width:610px) {
+   .flex-elem-admin {
+      height: auto;
+      padding-right: 20px;
+   }
+      .flex-elem-admin .album-cover{
+         width: 140px;
+         height: 140px;
+      }
+}
 .single{
    display: flex;
    flex-direction: row;  
