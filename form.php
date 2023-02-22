@@ -1,16 +1,17 @@
 <a href="/admin.php">Back</a>
-<?php 
-require "includes/db.php";
+<?php  
+require_once __DIR__ . '/includes/db.php';
+
 //Upload Image
-$image_dir = "./img/albums/";
+$image_dir = __DIR__ . '/img/albums/';
 $image_file = $image_dir . basename($_FILES["cover"]["name"]);
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($image_file,PATHINFO_EXTENSION));
+$imageFileType = strtolower(pathinfo($image_file, PATHINFO_EXTENSION));
 
 // Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
+if (isset($_POST["submit"])) {
   $check = getimagesize($_FILES["cover"]["tmp_name"]);
-  if($check !== false) {
+  if ($check !== false) {
     echo "File is an image - " . $check["mime"] . ".";
     $uploadOk = 1;
   } else {
@@ -32,8 +33,7 @@ if ($_FILES["cover"]["size"] > 500000) {
 }
 
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
+if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
   echo "Можна завантажити файли тільки у наступних форматах JPG, JPEG, PNG і GIF";
   $uploadOk = 0;
 }
@@ -44,23 +44,21 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
   if (move_uploaded_file($_FILES["cover"]["tmp_name"], $image_file)) {
-    echo "Файл ". htmlspecialchars( basename( $_FILES["cover"]["name"])). " був завантажений :)";
+    echo "Файл " . htmlspecialchars(basename($_FILES["cover"]["name"])) . " був завантажений :)";
   } else {
     echo "Під час завантаження файлу сталася помилка";
   }
 }
 
 //Upload songs
-//Upload songs
-//Upload songs
-$audio_dir = "./audio/";
+$audio_dir = __DIR__ . '/audio/';
 $audio_file = $audio_dir . basename($_FILES["file"]["name"]);
 $uploadOk2 = 1;
-$imageAudioType = strtolower(pathinfo($audio_file,PATHINFO_EXTENSION));
+$imageAudioType = strtolower(pathinfo($audio_file, PATHINFO_EXTENSION));
 
-if(isset($_POST["submit"])) {
+if (isset($_POST["submit"])) {
   $check = getimagesize($_FILES["file"]["tmp_name"]);
-  if($check !== false) {
+  if ($check !== false) {
     echo "File is an image - " . $check["mime"] . ".";
     $uploadOk2 = 1;
   } else {
@@ -82,8 +80,8 @@ if ($_FILES["file"]["size"] > 50000000) {
 }
 
 // Allow certain file formats
-if($imageAudioType != "mp3") {
-  echo "Можна завантажити файли тільки у наступних форматах JPG, JPEG, PNG і GIF";
+if ($imageAudioType !== 'mp3') {
+  echo "Можна завантажити файли тільки у форматі MP3";
   $uploadOk2 = 0;
 }
 
@@ -107,6 +105,5 @@ echo $album;
 $singer = htmlentities($_POST["singer"]);
 
 $sql = mysqli_query($connection, "INSERT INTO songs (song, album, singer) VALUES('{$_POST['song']}', '{$_POST['album']}', '{$_POST['singer']}')");
-
 
 
