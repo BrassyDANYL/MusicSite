@@ -1,4 +1,4 @@
-   <?php require 'header.php' ?> 
+   <?php require 'header.php'?> 
    <body>
       
    
@@ -9,8 +9,7 @@
 
          
    <?php 
-
-      $result = mysqli_query($connection, "SELECT * FROM songs order by rand()");
+   $result = mysqli_query($connection, "SELECT * FROM songs order by rand()");
 
       while(($cat = mysqli_fetch_assoc($result))){
 
@@ -25,6 +24,9 @@
    </div>
 </div>
 
+<div  class="load-more-container">
+   <button class="load-more-btn">Load More</button>
+</div>
 
 
 

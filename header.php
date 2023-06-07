@@ -17,7 +17,7 @@
             <div class="burger-content"></div>
          </div>
          <nav class="header-menu">
-            <a href="#" class="menu-item">Songers</a>
+            <a href="songers.php" class="menu-item">Songers</a>
             <a href="/randomsongs.php" class="menu-item">Random</a>
             <a href="#" class="menu-item">Menu</a>
             <a href="/admin.php" class="menu-item">Admin</a>

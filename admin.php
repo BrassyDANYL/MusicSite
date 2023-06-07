@@ -43,6 +43,7 @@
       <input class="file" type="file" name="file" accept="audio/mp3" >
 
       <input type="submit">
+</form>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="/script/scriptAdmin.js"></script>

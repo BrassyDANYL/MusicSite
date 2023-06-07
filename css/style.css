@@ -214,6 +214,18 @@ header{
 .flex-elem .album-cover{  
    height: 280px;
 }
+.flex-elem .author-link{
+   color: #fff;
+   text-decoration: none;
+   width: fit-content;
+   display: block;
+}
+.flex-elem .author-link:hover{
+   color: gray;
+}
+.flex-elem .author{
+   width: fit-content;
+}
 .admin-upload-form{
    display: flex;
    flex-direction: column;

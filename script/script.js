@@ -17,6 +17,8 @@ const cbox = document.querySelectorAll('.flex-elem');
 
 function songChoice(){
 $(".flex-elem").on('click', function(){
+   $(".flex-elem").removeClass('active');
+   $(this).addClass('active');
    var text = $(this).find('.name').text();
    var textAlbum = $(this).find('.album').text();
    var songerName = $(this).find('.author').text();
@@ -67,12 +69,50 @@ playBtn.addEventListener('click', () => {
       playSong();
    }
 });
+//Prev Song
+function prevSong(){
+   pauseSong();
+
+   const currentSongIndex = Array.from(cbox).findIndex(box => box.classList.contains('active'));
+   const nextSongIndex = currentSongIndex === 0 ? cbox.length - 1 : currentSongIndex - 1;
+   const nextSongBox = cbox[nextSongIndex];
+   $(".flex-elem").removeClass('active');
+   nextSongBox.classList.add('active');
+   const nextSongTitle = nextSongBox.querySelector('.name').textContent;
+   const nextSongAlbum = nextSongBox.querySelector('.album').textContent;
+   const nextSongArtist = nextSongBox.querySelector('.author').textContent;
+
+   loadSong(nextSongTitle, nextSongAlbum, nextSongArtist);
+
+   playSong();
+
+
+}
+prevBtn.addEventListener('click', prevSong);
+//Next Song
+function nextSong() {
+   pauseSong();
+
+   const currentSongIndex = Array.from(cbox).findIndex(box => box.classList.contains('active'));
+   const nextSongIndex = currentSongIndex === cbox.length - 1 ? 0 : currentSongIndex + 1;
+   const nextSongBox = cbox[nextSongIndex];
+   $(".flex-elem").removeClass('active');
+   nextSongBox.classList.add('active');
+   const nextSongTitle = nextSongBox.querySelector('.name').textContent;
+   const nextSongAlbum = nextSongBox.querySelector('.album').textContent;
+   const nextSongArtist = nextSongBox.querySelector('.author').textContent;
+
+   loadSong(nextSongTitle, nextSongAlbum, nextSongArtist);
+
+   playSong();
+}
+
+nextBtn.addEventListener('click', nextSong);
 //Progress bar
 function updateProgress(e){
    const {duration, currentTime } = e.srcElement;
    const progressPercent = (currentTime / duration) * 100;
    progress.style.width = progressPercent+"%";
-   console.log(audio.currentTime);
    var sec_num = audio.currentTime;// don't forget the second param
    var hours = Math.floor(sec_num / 3600);
    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
@@ -81,7 +121,9 @@ function updateProgress(e){
    if (minutes < 10) { minutes = "0" + minutes; }
    if (seconds < 10) { seconds = "0" + seconds; }
    timer.innerHTML = minutes + ':' + seconds;
-
+   if (duration == currentTime){
+      nextSong();
+   }
 }
 audio.addEventListener('timeupdate', updateProgress);
 
@@ -110,33 +152,40 @@ $(function (){
       $('.header-menu').toggleClass('open-burger');
    
    });
+//loadmore 
+let offset = 3; // Початкове значення змінної offset
 
-
-
-$('.carousel').slick({
-   centerMode: true,
-   centerPadding: '60px',
-   slidesToShow: 3,
-   responsive: [
-      {
-         breakpoint: 768,
-         settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 3
-         }
-      },
-      {
-         breakpoint: 480,
-         settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 1
-         }
+function loadMore() {
+   // Відправити AJAX-запит на сервер з параметром offset
+   $.ajax({
+      url: 'loadmore.php',
+      type: 'POST',
+      data: { offset: offset },
+      success: function (data) {
+         // Додати отримані дані до списку пісень
+         $('.flex-container').append(data);
+         // Збільшити значення змінної offset
+         offset += 3;
       }
-   ]
+   });
+}
+
+// Відслідковувати скролінг сторінки
+$(window).scroll(function () {
+   // Якщо користувач докрутив до кінця списку
+   if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+         $('.load-more-container').css('display', 'none');
+   }
 });
+
+// Відслідковувати клік на кнопку "Load More"
+$('.load-more-btn').click(function () {
+   loadMore();
+});
+
+
+
+
+
 
 
